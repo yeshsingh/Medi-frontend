@@ -7,7 +7,7 @@ const FaqItem = ({ item })=>{
    const toggleAccordion=()=>{
     setIsOpen(!isOpen);
    };
-   console.log(12345);
+
    return (
     <div className="p-3 lg:p-5 rounded-[12px] border border-solid border-[#D9DCE2] mb-5 cursor-pointer">
         <div 
@@ -15,7 +15,7 @@ const FaqItem = ({ item })=>{
         onClick={toggleAccordion}
         >
             <h4 className="text-[16px] leading-7 lg:text-[22px] lg:leading-8 text-headingColor">
-                {item?.question}
+                {item.question}
             </h4>
             <div 
             className={`${
@@ -25,6 +25,13 @@ const FaqItem = ({ item })=>{
                 {isOpen ? <AiOutlineMinus /> : <AiOutlinePlus />}
             </div>
         </div>
+        {isOpen && (
+        <div className="mt-4">
+            <p className="text-[14px] leading-6 lg:text-[16px] lg:leading-7 font-[400] text-textColor">
+                {item.content}
+            </p>
+        </div>
+        )}
     </div>
    );
 };

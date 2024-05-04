@@ -15,8 +15,8 @@ import aboutImg from "../assets/images/about.png";
 import aboutCardImg from "../assets/images/about-card.png";
 import DoctorList from "../components/Doctors/DoctorList";
 import ServiceList from "../components/Services/ServiceList";
-import FaqList from "../components/Faq/FaqItem";
-
+import FaqList from "../components/Faq/FaqList";
+//import Testimonial from "../components/Testimonial/Testimonial";
 
 const Home = () => {
     return (
@@ -278,7 +278,7 @@ const Home = () => {
                 </p>
             </div>
 
-            {/* <DoctorList /> */}
+            <DoctorList />
         </div>
     </section>
     {/*                our great doctors                     */}
