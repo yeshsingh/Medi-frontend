@@ -12,6 +12,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from "./pages/Home";
 import Dashboard from "./Dashboard/doctor-account/Dashboard";
 import ProtectedRoute from "../protectedRoute";
+import Location from "./components/Location/Location";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
          <Route path="/register" element={<Signup/>}/>
          <Route path="/contact" element={<Contact/>}/>
          <Route path="/services" element={<Services/>}/>
+         <Route path="/location" element={<Location />}></Route>
          <Route path="/users/profile/me" element={<ProtectedRoute allowedRoles={['patient']}><MyAccount /></ProtectedRoute>} />
          <Route path="/doctors/profile/me" element={<ProtectedRoute allowedRoles={['doctor']}><Dashboard /></ProtectedRoute>} />
      </Routes>

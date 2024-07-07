@@ -1,43 +1,57 @@
-import React from 'react'
-import { Pagination } from 'swiper'
-import {Swiper, SwiperSlide} from 'swiper/react'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import patientAvatar from '../../assets/images/patient-avatar.png'
-import {HiStar} from 'react-icons/hi'
+import React, { useState } from 'react';
+import '../../App.css';
+import patientAvatar from '../../assets/images/patient-avatar.png';
+import { HiStar } from 'react-icons/hi';
 
-const Testimonial =()=>{
-    return (
-        <div className='mt-[30px] lg:mt-[55px]'>
-            <Swiper modules={[Pagination]} spaceBetween={30} slidesPerView={1} pagination={{clickable:true}}
-            breakpoints={{
-                640: {
-                    slidsPerview: 1,
-                    spaceBetween: 0,
-                },
-                768: {
-                    slidsPerview: 2,
-                    spaceBetween: 20,
-                },
-                1024: {
-                    slidsPerview: 3,
-                    spaceBetween: 30,
-                },
-            }}>
-                <SwiperSlide>
-                    <div className="py-[30px] px-5 rounded-3">
-                        <div className="flex items-center gap-[13px]">
-                            <img src={patientAvatar} alt=""/>
-                            <div>
-                                <h4 className="text-[18px] leading-[30px] font-semibold text-headingColor">
-                                    Yesh Singh
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </SwiperSlide>
-            </Swiper>
+const testimonials = [
+  {
+    name: 'Muhibur Rahman',
+    text: 'I have taken medical services from them. They treat so well and they are providing the best medical services.',
+  },
+  {
+    name: 'Yesh Singh',
+    text: 'I have taken medical services from them. They treat so well and they are providing the best medical services.',
+  }
+];
+
+const Testimonial = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleDotClick = (index) => {
+    setActiveIndex(index);
+  };
+
+  return (
+    <div className="testimonial-container">
+      <div className="testimonial">
+        <div className="testimonial-content">
+          <div className="testimonial-header">
+            <img src={patientAvatar} alt="Patient Avatar" />
+            <div>
+              <h4>{testimonials[activeIndex].name}</h4>
+              <div className="stars">
+                {[...Array(5)].map((_, i) => (
+                  <HiStar key={i} className="star" />
+                ))}
+              </div>
+            </div>
+          </div>
+          <p className="testimonial-text">
+            {testimonials[activeIndex].text}
+          </p>
         </div>
-    );
+        <div className="testimonial-dots">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              className={`dot ${activeIndex === index ? 'active' : ''}`}
+              onClick={() => handleDotClick(index)}
+            ></button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
+
 export default Testimonial;

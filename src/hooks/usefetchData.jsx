@@ -49,7 +49,7 @@ const usefetchData = (url) => {
         });
         const result = await res.json();
         if (!res.ok) {
-          throw new Error(result.message || 'Something went wrong!');
+          throw new Error(result.message + "Something went wrong!");
         }
         setData(result.data);
         setLoading(false);
@@ -66,4 +66,4 @@ const usefetchData = (url) => {
   console.log(data);
 };
 
-export default usefetchData;
+export default usefetchData ;

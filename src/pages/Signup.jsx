@@ -16,21 +16,23 @@ const Signup = () => {
         name: "",
         email: "",
         password: "",
-        photo: null,
+        photo: selectedFile,
         gender: "",
         role: "patient",
     });
 
     const navigate=useNavigate()
     const handleInputChange = (e) => {
+        e.preventDefault();
+
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleFileInputChange = async event => {
-        const file = event.target.files[0];
-        
+    const handleFileInputChange = async (event) => {
+        event.preventDefault();
+        const file = event.target.files[0];   
         const data = await uploadImageToCloudinary(file);
-
+        console.log(data) ;
         setPreviewURL(data.url);
         setSelectedFile(data.url);
         setFormData({...formData, photo: data.url});
@@ -203,4 +205,4 @@ const Signup = () => {
         </section>
     );
 };
-export default Signup;
+export default Signup;
